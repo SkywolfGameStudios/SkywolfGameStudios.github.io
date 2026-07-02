@@ -209,6 +209,16 @@
     font-style:italic;text-transform:uppercase;color:var(--text)}
   .foot-brand img{width:30px;height:30px;border-radius:50%}
 
+  /* ---------- BACK TO TOP ---------- */
+  .totop{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(12px);
+    z-index:60;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(17,24,35,.9);border:1px solid var(--border);color:var(--cyan-bright);cursor:pointer;
+    backdrop-filter:blur(8px);opacity:0;pointer-events:none;
+    transition:opacity .25s,transform .25s,border-color .2s,box-shadow .2s}
+  .totop.show{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .totop:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(0,0,0,.45)}
+  .totop svg{width:20px;height:20px}
+
   @media(max-width:760px){
     .nav-links{position:fixed;inset:68px 0 auto 0;flex-direction:column;gap:0;
       background:var(--bg-2);border-bottom:1px solid var(--border);
@@ -567,6 +577,10 @@
   </div>
 </footer>
 
+<button class="totop" id="totop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   // Close mobile menu when a link is tapped
@@ -589,6 +603,12 @@
   }
   window.openLB = openLB; window.closeLB = closeLB;
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLB({}); });
+
+  // Back-to-top button: show after scrolling down
+  var totop = document.getElementById('totop');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 400) { totop.classList.add('show'); } else { totop.classList.remove('show'); }
+  });
 </script>
 </body>
 </html>
