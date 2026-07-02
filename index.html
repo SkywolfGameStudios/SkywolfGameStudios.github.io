@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skywolf Game Studios — Indie Games that bite back!</title>
+<meta name="description" content="Skywolf Game Studios is an indie studio from Palm Bay, FL building games and 3D assets. Play our games on Google Play and itch.io, grab our asset packs, and support us on Patreon.">
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="Skywolf Game Studios">
+<meta property="og:description" content="Indie Games that bite back! Games, 3D assets, and more from Skywolf Game Studios.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://skywolfgamestudios.github.io/">
+<meta property="og:image" content="https://skywolfgamestudios.github.io/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;1,800;1,900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#05070b;
+    --bg-2:#0a0e15;
+    --surface:#111823;
+    --surface-2:#161f2c;
+    --border:#1f2b3a;
+    --cyan:#1cb0f6;
+    --cyan-bright:#3ec6ff;
+    --orange:#ff9f1c;
+    --orange-bright:#ffb347;
+    --text:#eaf1f8;
+    --muted:#93a3b5;
+    --radius:16px;
+    --maxw:1160px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  section{padding:84px 0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  h1,h2,h3,.brand{font-family:'Montserrat',sans-serif}
+  h2.section-title{
+    font-size:clamp(1.7rem,4vw,2.5rem);
+    font-weight:800;letter-spacing:.5px;
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  h2.section-title span{color:var(--cyan)}
+  .section-sub{color:var(--muted);margin-bottom:40px;max-width:620px}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(5,7,11,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .nav-brand{display:flex;align-items:center;gap:12px;font-weight:800;font-style:italic;
+    text-transform:uppercase;letter-spacing:1px;font-size:1.1rem}
+  .nav-brand img{width:38px;height:38px;border-radius:50%}
+  .nav-brand b{color:var(--cyan)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{
+    background:var(--orange);
+    color:#1a1205 !important;font-weight:700;padding:9px 18px;border-radius:999px;
+    transition:transform .15s,box-shadow .2s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.45)}
+  .nav-toggle{display:none;background:none;border:0;color:var(--text);cursor:pointer;padding:8px}
+  .nav-toggle svg{width:26px;height:26px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;border-bottom:1px solid var(--border);overflow:hidden;
+    background:radial-gradient(circle at 50% 32%, rgba(28,176,246,.16), transparent 60%), var(--bg)}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:64px 24px 78px;
+    display:flex;flex-direction:column;align-items:center;text-align:center}
+  .hero-logo{width:clamp(200px,30vw,300px);height:auto;
+    filter:drop-shadow(0 0 34px rgba(28,176,246,.2));margin-bottom:6px}
+  .hero h1{font-size:clamp(1.7rem,4.6vw,3rem);font-weight:900;font-style:italic;
+    text-transform:uppercase;letter-spacing:1px;line-height:1.08;
+    text-shadow:0 4px 40px rgba(0,0,0,.6)}
+  .hero h1 .c{color:var(--cyan-bright)}
+  .hero h1 .o{color:var(--orange)}
+  .hero p.tag{margin:16px auto 30px;font-size:clamp(1.02rem,2.2vw,1.28rem);color:#d6e2ee;
+    max-width:640px;font-weight:500}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;
+    color:#bfe9cf;background:rgba(46,204,113,.09);border:1px solid rgba(46,204,113,.32);
+    padding:6px 14px;border-radius:999px;margin-bottom:24px;letter-spacing:.3px}
+  .status .dot{width:8px;height:8px;border-radius:50%;background:#2ecc71;
+    box-shadow:0 0 9px rgba(46,204,113,.85)}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.98rem;
+    padding:13px 24px;border-radius:999px;transition:transform .15s,box-shadow .2s,background .2s;cursor:pointer;border:0}
+  .btn svg{width:19px;height:19px}
+  .btn-primary{background:var(--cyan);color:#04151f}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.45)}
+  .btn-orange{background:var(--orange);color:#1a1205}
+  .btn-orange:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.45)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .btn-ghost:hover{transform:translateY(-1px);border-color:var(--cyan);color:var(--cyan-bright)}
+
+  /* ---------- GAMES GRID ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,border-color .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .card-top{height:96px;display:flex;align-items:center;justify-content:center;position:relative;
+    background:linear-gradient(135deg,#0c1420,#152233);border-bottom:1px solid var(--border)}
+  .card-top .initial{font-family:'Montserrat';font-weight:900;font-style:italic;font-size:2.4rem;
+    color:var(--cyan);opacity:.9;text-transform:uppercase}
+  .card-top .badge{position:absolute;top:10px;right:10px;font-size:.68rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.5px;padding:4px 9px;border-radius:999px;
+    background:rgba(28,176,246,.14);color:var(--cyan-bright);border:1px solid rgba(28,176,246,.38)}
+  .card-top .badge.dev{background:rgba(255,159,28,.16);color:var(--orange-bright);border-color:rgba(255,159,28,.4)}
+  .card.feat{border-color:rgba(28,176,246,.4)}
+  .tag-flag{display:inline-block;align-self:flex-start;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+    color:var(--cyan-bright);background:rgba(28,176,246,.12);border:1px solid rgba(28,176,246,.35);
+    padding:3px 10px;border-radius:999px;margin-bottom:10px}
+  .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+  .card-body h3{font-family:'Inter';font-weight:700;font-size:1.12rem;margin-bottom:6px}
+  .card-body p{color:var(--muted);font-size:.92rem;flex:1;margin-bottom:16px}
+  .card-links{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{font-size:.82rem;font-weight:600;padding:7px 13px;border-radius:999px;border:1px solid var(--border);
+    color:var(--muted);transition:all .18s;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:var(--cyan);color:var(--cyan-bright);background:rgba(28,176,246,.08)}
+  .chip.play:hover{border-color:var(--orange);color:var(--orange-bright);background:rgba(255,159,28,.08)}
+
+  /* ---------- CAPABILITIES ---------- */
+  .cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+  .cap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;transition:transform .18s,border-color .2s}
+  .cap:hover{transform:translateY(-4px);border-color:var(--cyan)}
+  .cap-ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(28,176,246,.18),rgba(255,159,28,.12));border:1px solid var(--border);margin-bottom:16px}
+  .cap-ico svg{width:24px;height:24px;color:var(--cyan-bright)}
+  .cap h3{font-family:'Inter';font-weight:700;font-size:1.12rem;margin-bottom:8px}
+  .cap p{color:var(--muted);font-size:.93rem}
+
+  /* ---------- STORE BANNER ---------- */
+  .store{background:var(--surface);border:1px solid var(--border);
+    border-radius:20px;padding:48px 40px;text-align:center;position:relative;overflow:hidden}
+  .store::before{content:"";position:absolute;top:-40%;right:-10%;width:300px;height:300px;
+    background:radial-gradient(circle,rgba(28,176,246,.08),transparent 70%);pointer-events:none}
+  .store h2{font-family:'Montserrat';font-weight:800;text-transform:uppercase;
+    font-size:clamp(1.5rem,3.5vw,2.1rem);margin-bottom:12px}
+  .store p{color:var(--muted);max-width:560px;margin:0 auto 26px}
+  .phone-note{margin-top:22px;color:var(--muted);font-size:.9rem}
+  .phone-note a{color:var(--cyan-bright);font-weight:600;white-space:nowrap}
+
+  /* ---------- SUPPORT ---------- */
+  .support{background:var(--surface);border:1px solid var(--border);
+    border-radius:20px;padding:48px 40px;text-align:center;position:relative;overflow:hidden}
+  .support h2{font-family:'Montserrat';font-weight:800;text-transform:uppercase;
+    font-size:clamp(1.5rem,3.5vw,2.1rem);margin-bottom:12px}
+  .support p{color:var(--muted);max-width:560px;margin:0 auto 26px}
+  .socials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .socials a{width:46px;height:46px;border-radius:50%;background:var(--surface);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;transition:all .18s;color:var(--muted)}
+  .socials a:hover{transform:translateY(-3px);border-color:var(--cyan);color:var(--cyan-bright)}
+  .socials svg{width:20px;height:20px}
+
+  /* ---------- FOUNDER NOTE ---------- */
+  .note-sec{padding-top:20px;padding-bottom:20px}
+  .note{max-width:760px;margin:0 auto;text-align:center;position:relative;padding:0 12px}
+  .note p{font-size:clamp(1.08rem,2.1vw,1.3rem);color:#cdd9e6;font-weight:500;line-height:1.65}
+  .note cite{display:block;margin-top:18px;font-style:normal;font-weight:600;
+    color:var(--cyan-bright);font-size:.95rem;letter-spacing:.3px}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--border);padding:40px 0;color:var(--muted);font-size:.9rem}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:10px;font-family:'Montserrat';font-weight:800;
+    font-style:italic;text-transform:uppercase;color:var(--text)}
+  .foot-brand img{width:30px;height:30px;border-radius:50%}
+
+  @media(max-width:760px){
+    .nav-links{position:fixed;inset:68px 0 auto 0;flex-direction:column;gap:0;
+      background:var(--bg-2);border-bottom:1px solid var(--border);
+      max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .nav-links.open{max-height:360px}
+    .nav-links a{padding:15px 24px;width:100%;border-top:1px solid var(--border)}
+    .nav-links .nav-cta{margin:14px 24px;text-align:center}
+    .nav-toggle{display:block}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="assets/logo.png" alt="Skywolf Game Studios logo">
+      <span>Sky<b>wolf</b></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav-links" id="navlinks">
+      <a href="#capabilities">What We Do</a>
+      <a href="#games">Work</a>
+      <a href="#store">Assets</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.patreon.com/skywolfgamestudios" class="nav-cta" target="_blank" rel="noopener">Support Us</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="status"><span class="dot"></span> Open for freelance &amp; collaboration</span>
+    <img class="hero-logo" src="assets/logo.png" alt="Skywolf Game Studios logo">
+    <h1><span class="c">Indie Games</span> that <span class="o">bite back!</span></h1>
+    <p class="tag">A small indie studio in Palm Bay, Florida, building original games and the 3D worlds inside them — <strong>design, art, and code, start to finish</strong>. Made in Blender&nbsp;3D and Unreal&nbsp;Engine, and open to the right clients and partners.</p>
+    <div class="hero-btns">
+        <a class="btn btn-orange" href="#contact">Work With Us</a>
+        <a class="btn btn-primary" href="#games">Explore Our Work</a>
+        <a class="btn btn-ghost" href="https://skywolfgamestudios.itch.io/" target="_blank" rel="noopener">itch.io Store</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section id="capabilities">
+  <div class="wrap">
+    <h2 class="section-title">What We <span>Do</span></h2>
+    <p class="section-sub">Everything a game needs, under one roof — concept, art, code, and release. We build our own titles, and we take on client and collaboration work too.</p>
+    <div class="cap-grid">
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M7 12h4M9 10v4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="13.5" r="1"/></svg></div>
+        <h3>Game Development</h3>
+        <p>We design and build games in Unreal Engine — the systems, the levels, and the moment-to-moment feel — then ship them on PC and mobile.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></div>
+        <h3>3D Art &amp; Environments</h3>
+        <p>Modeled in Blender: characters, props, and full environments, stylized or realistic — built to hold up in real time.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></div>
+        <h3>Asset Production</h3>
+        <p>30+ asset packs, tools, and generators already out on itch.io — reusable, game-ready, and put to work by other devs.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <h3>Mobile &amp; Monetization</h3>
+        <p>Live on Google Play with ads and in-app purchases wired in. We know the whole road — build, store, and revenue.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= IN DEVELOPMENT ================= -->
+<section id="games">
+  <div class="wrap">
+    <h2 class="section-title">In <span>Development</span></h2>
+    <p class="section-sub">What we're building next. <strong>Laser Zombies</strong> and <strong>Barko &amp; The Lost Bone</strong> are our flagship IPs — original worlds we're investing in and pushing hard.</p>
+    <div class="grid">
+
+      <div class="card feat">
+        <div class="card-top"><span class="initial">L</span><span class="badge dev">In Development</span></div>
+        <div class="card-body">
+          <span class="tag-flag">Flagship IP</span>
+          <h3>Laser Zombies</h3>
+          <p>A sci-fi zombie shooter — energy weapons, relentless undead, and nowhere safe to catch your breath.</p>
+          <div class="card-links">
+            <a class="chip" href="https://skywolfgamestudios.itch.io/" target="_blank" rel="noopener">Follow for updates</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card feat">
+        <div class="card-top"><span class="initial">B</span><span class="badge dev">In Development</span></div>
+        <div class="card-body">
+          <span class="tag-flag">Flagship IP</span>
+          <h3>Barko &amp; The Lost Bone</h3>
+          <p>A stylized 3D open-world platformer — a determined dog on a quest for his missing bone, with unique abilities across diverse worlds.</p>
+          <div class="card-links">
+            <a class="chip" href="https://skywolfgamestudios.itch.io/barkolostbone" target="_blank" rel="noopener">Follow on itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="initial">T</span><span class="badge dev">In Development</span></div>
+        <div class="card-body">
+          <h3>Timeflux</h3>
+          <p>An experimental take on time and narrative — innovative gameplay still taking shape.</p>
+          <div class="card-links">
+            <a class="chip" href="https://skywolfgamestudios.itch.io/" target="_blank" rel="noopener">Follow for updates</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="initial">B</span><span class="badge dev">In Development</span></div>
+        <div class="card-body">
+          <h3>BattleForte</h3>
+          <p>War, crafted your way.</p>
+          <div class="card-links">
+            <a class="chip" href="https://skywolfgamestudios.itch.io/battleforte" target="_blank" rel="noopener">Follow on itch.io</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= AVAILABLE NOW ================= -->
+<section id="play">
+  <div class="wrap">
+    <h2 class="section-title">Available <span>Now</span></h2>
+    <p class="section-sub">Free to play on itch.io, with select titles live on Google Play.</p>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top"><span class="initial">P</span><span class="badge">On Google Play</span></div>
+        <div class="card-body">
+          <h3>Puzzletrap</h3>
+          <p>A simple, fun puzzle-based casual platformer.</p>
+          <div class="card-links">
+            <a class="chip play" href="https://play.google.com/store/apps/details?id=com.SkywolfGameStudios.PuzzletrapMobile" target="_blank" rel="noopener">▶ Google Play</a>
+            <a class="chip" href="https://skywolfgamestudios.itch.io/puzzletrap" target="_blank" rel="noopener">itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="initial">A</span><span class="badge">On Google Play</span></div>
+        <div class="card-body">
+          <h3>Arcade Zone</h3>
+          <p>Play mini arcade games, win tickets, and collect digital trophies.</p>
+          <div class="card-links">
+            <a class="chip play" href="https://play.google.com/store/apps/details?id=com.skywolfgamestudios.arcadezone" target="_blank" rel="noopener">▶ Google Play</a>
+            <a class="chip" href="https://skywolfgamestudios.itch.io/arcadezone" target="_blank" rel="noopener">itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="initial">N</span></div>
+        <div class="card-body">
+          <h3>Neovoid</h3>
+          <p>A tense sci-fi survival experience.</p>
+          <div class="card-links">
+            <a class="chip" href="https://skywolfgamestudios.itch.io/neovoid" target="_blank" rel="noopener">Play on itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="initial">T</span></div>
+        <div class="card-body">
+          <h3>Titanic Panic</h3>
+          <p>Race your boat to rescue swimmers while dodging icebergs.</p>
+          <div class="card-links">
+            <a class="chip" href="https://skywolfgamestudios.itch.io/titanic-panic" target="_blank" rel="noopener">Play on itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="initial">S</span><span class="badge">Seasonal</span></div>
+        <div class="card-body">
+          <h3>Santa's Workshop: Unhinged</h3>
+          <p>Help Santa clear presents before the room fills up.</p>
+          <div class="card-links">
+            <a class="chip" href="https://skywolfgamestudios.itch.io/santasworkshopunhinged" target="_blank" rel="noopener">Play on itch.io</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORE / ASSETS ================= -->
+<section id="store">
+  <div class="wrap">
+    <div class="store">
+      <h2>3D Assets &amp; Game-Dev Packs</h2>
+      <p>30+ low-poly and realistic packs, tools, and generators for Unreal and Blender — from free CC0 models to full environment sets. If you've shipped with one, you've already met our work.</p>
+      <a class="btn btn-primary" href="https://skywolfgamestudios.itch.io/" target="_blank" rel="noopener">Browse the Asset Store →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOUNDER NOTE ================= -->
+<section class="note-sec">
+  <div class="wrap">
+    <blockquote class="note">
+      <!-- Founder note (first-person). Swap the name/wording to taste. -->
+      <p>&ldquo;Skywolf started back in 2013 as one person who wanted to make games worth finishing — and it still runs that way. I do the design, the art, and the code, and I care about every piece that ships. If that's the kind of work you want to back or build with, we'll get along.&rdquo;</p>
+      <cite>— Kade Markoux, Founder</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ================= CONTACT / WORK WITH US ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="store">
+      <h2>Let's Build Something</h2>
+      <p>We're open to contract game dev, 3D and asset work, collaborations, and funding conversations. Tell us what you're making — we'll tell you how we can help.</p>
+      <div class="hero-btns" style="justify-content:center">
+        <a class="btn btn-primary" href="mailto:skywolfgamestudios@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Email the Studio
+        </a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/company/24786911" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
+      <p class="phone-note">Email's the fastest way to reach me. Prefer to call? Leave a voicemail at <a href="tel:+13212947791">(321)&nbsp;294-7791</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUPPORT ================= -->
+<section id="support">
+  <div class="wrap">
+    <div class="support">
+      <h2>Support the Pack</h2>
+      <p>Skywolf runs independent. If our games or assets have earned it, Patreon keeps the lights on and the next project moving — with behind-the-scenes access along the way.</p>
+      <a class="btn btn-orange" href="https://www.patreon.com/skywolfgamestudios" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.4 2.2c-4 0-7.2 3.2-7.2 7.2 0 4 3.2 7.2 7.2 7.2s7.2-3.3 7.2-7.2c0-4-3.2-7.2-7.2-7.2zM2 2.2h3.5v19.6H2z"/></svg>
+        Become a Patron
+      </a>
+
+      <div class="socials">
+        <a href="https://skywolfgamestudios.itch.io/" target="_blank" rel="noopener" aria-label="itch.io">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v13h-7l-2 3-2-3H3V4zm2 2v9h6.2l.8 1.2.8-1.2H19V6H5z"/></svg>
+        </a>
+        <a href="https://x.com/SkywolfGameStds" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7 8 8.2 12H16l-5-7.4L5.5 22H2l7.5-8.6L1.6 2H9l4.5 6.7L18.9 2zm-1.1 18h1.7L7 4H5.2l12.6 16z"/></svg>
+        </a>
+        <a href="https://bsky.app/profile/skywolfgamestudios.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.3 3.8C8.6 5.5 11 9 12 10.9c1-1.9 3.4-5.4 5.7-7.1 1.6-1.2 4.3-2.2 4.3.9 0 .6-.4 5.2-.6 6-.7 2.6-3.3 3.2-5.7 2.8 4.1.7 5.2 3 2.9 5.4-4.3 4.4-6.2-1.1-6.7-2.5-.1-.3-.1-.4-.2-.2 0-.1 0 0-.2.2-.5 1.4-2.4 6.9-6.7 2.5-2.3-2.4-1.2-4.7 2.9-5.4-2.4.4-5-.2-5.7-2.8-.2-.8-.6-5.4-.6-6 0-3.1 2.7-2.1 4.3-.9z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@SkywolfGameStudios" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.4 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/SkywolfGameStudios" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/24786911" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.8-2.2 3.75-2.2 4 0 4.7 2.6 4.7 6V24h-4v-7c0-1.7 0-3.8-2.3-3.8s-2.7 1.8-2.7 3.7V24h-4V8z"/></svg>
+        </a>
+        <a href="https://github.com/SkywolfGameStudios" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a11 11 0 0 0-3.5 21.4c.6.1.8-.2.8-.5v-2c-3 .6-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7 0-.7 0-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.4 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.8 1.1 3 0 4.2-2.6 5.1-5 5.4.4.3.8 1 .8 2.1v3.1c0 .3.2.6.8.5A11 11 0 0 0 12 1z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand">
+      <img src="assets/logo.png" alt="">
+      <span>Skywolf Game Studios</span>
+    </div>
+    <div>© <span id="year"></span> Skywolf Game Studios · Palm Bay, FL · Making games since 2013</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Close mobile menu when a link is tapped
+  document.querySelectorAll('#navlinks a').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('navlinks').classList.remove('open')});
+  });
+</script>
+</body>
+</html>
