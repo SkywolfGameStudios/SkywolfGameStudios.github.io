@@ -88,10 +88,10 @@
   /* ---------- HERO ---------- */
   .hero{position:relative;border-bottom:1px solid var(--border);overflow:hidden;
     background:radial-gradient(circle at 50% 32%, rgba(28,176,246,.16), transparent 60%), var(--bg)}
-  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:64px 24px 78px;
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:26px 24px 72px;
     display:flex;flex-direction:column;align-items:center;text-align:center}
-  .hero-logo{width:clamp(200px,30vw,300px);height:auto;
-    filter:drop-shadow(0 0 34px rgba(28,176,246,.2));margin-bottom:6px}
+  .hero-logo{width:clamp(260px,42vw,440px);height:auto;
+    filter:drop-shadow(0 0 40px rgba(28,176,246,.22));margin-bottom:16px}
   .hero h1{font-size:clamp(1.7rem,4.6vw,3rem);font-weight:900;font-style:italic;
     text-transform:uppercase;letter-spacing:1px;line-height:1.08;
     text-shadow:0 4px 40px rgba(0,0,0,.6)}
@@ -100,11 +100,12 @@
   .hero p.tag{margin:16px auto 30px;font-size:clamp(1.02rem,2.2vw,1.28rem);color:#d6e2ee;
     max-width:640px;font-weight:500}
   .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .status{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;
-    color:#bfe9cf;background:rgba(46,204,113,.09);border:1px solid rgba(46,204,113,.32);
-    padding:6px 14px;border-radius:999px;margin-bottom:24px;letter-spacing:.3px}
-  .status .dot{width:8px;height:8px;border-radius:50%;background:#2ecc71;
-    box-shadow:0 0 9px rgba(46,204,113,.85)}
+  .status{display:inline-block;font-size:.82rem;font-weight:600;color:#bfe9cf;
+    background:rgba(46,204,113,.09);border:1px solid rgba(46,204,113,.32);
+    padding:8px 18px;border-radius:999px;margin-bottom:22px;letter-spacing:.3px;
+    max-width:94%;text-align:center;line-height:1.5}
+  .status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2ecc71;
+    vertical-align:middle;margin-right:8px;box-shadow:0 0 9px rgba(46,204,113,.85)}
 
   .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.98rem;
     padding:13px 24px;border-radius:999px;transition:transform .15s,box-shadow .2s,background .2s;cursor:pointer;border:0}
@@ -228,8 +229,8 @@
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-inner">
-    <span class="status"><span class="dot"></span> Open for freelance &amp; collaboration</span>
     <img class="hero-logo" src="assets/logo.png" alt="Skywolf Game Studios logo">
+    <span class="status"><span class="dot"></span> Open to Business Inquiries, Partnerships, Freelance &amp; Collaboration</span>
     <h1><span class="c">Indie Games</span> that <span class="o">bite back!</span></h1>
     <p class="tag">A small indie studio in Palm Bay, Florida, building original games and the 3D worlds inside them — <strong>design, art, and code, start to finish</strong>. Made in Blender&nbsp;3D and Unreal&nbsp;Engine, and open to the right clients and partners.</p>
     <div class="hero-btns">
