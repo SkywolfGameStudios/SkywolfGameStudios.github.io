@@ -1,0 +1,5 @@
+# Raw, unoptimized source images — optimized copies live in assets/gallery/
+assets/showcase/
+
+# Local dev preview config
+.claude/
