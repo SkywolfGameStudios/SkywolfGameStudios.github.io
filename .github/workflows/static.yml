@@ -9,6 +9,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Daily refresh so the mirrored policy pages pick up any itch.io edits
+  schedule:
+    - cron: '17 9 * * *'
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -31,6 +35,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Sync policy pages from itch.io
+        run: |
+          python -m pip install --quiet beautifulsoup4
+          python scripts/sync_policies.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
