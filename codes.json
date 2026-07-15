@@ -1,0 +1,16 @@
+{
+  "codes": [
+    {
+      "comment": "TEST100 — internal testing only, remove after verifying the redeem flow",
+      "hash": "cf642485536310311e67de6e5491e5ea58d98be77de0b9b5a42db3d0233311ca",
+      "coins": 100,
+      "expires": "2026-08-31"
+    },
+    {
+      "comment": "ARCADE200 — example social giveaway code, delete or keep as launch promo",
+      "hash": "1020c593fd2eb3acfed507467d8a096e509f299aabf24b3c8b6fa67368a6f649",
+      "coins": 200,
+      "expires": "2026-09-30"
+    }
+  ]
+}
